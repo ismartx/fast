@@ -1,8 +1,8 @@
 package org.smartx.fast.session;
 
+import org.smartx.commons.utils.SpringContextHolder;
 import org.smartx.fast.exception.InvalidConfigException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +17,6 @@ import javax.annotation.PostConstruct;
  * @author kext
  * @since 1.0
  */
-@Component
 public class SessionContextSupport {
 
     private final Map<String, SessionContext> sessionContextMap = new HashMap<>();
@@ -27,12 +26,12 @@ public class SessionContextSupport {
 
     @PostConstruct
     private void init() {
-        this.sessionContextMap.put("redis", new RedisSessionContext());
+        this.sessionContextMap.put("redis", SpringContextHolder.getBean("redisSessionContext"));
     }
 
     public SessionContext get() {
         if (!sessionContextMap.containsKey(key)) {
-            throw new InvalidConfigException("Invalid fast.api.session, only support none, map, redis");
+            throw new InvalidConfigException("Invalid fast.api.session value, only support [none, map or redis]");
         }
         return this.sessionContextMap.get(key);
     }
