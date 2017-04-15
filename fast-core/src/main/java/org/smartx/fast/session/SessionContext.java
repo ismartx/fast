@@ -71,8 +71,8 @@ public interface SessionContext {
      */
     void putClient(Client client, String uid);
 
-    default Boolean validateSessionParam(SessionUser user) {
-        return null != user && !(StringUtils.isEmpty(user.getSid()) || StringUtils.isEmpty(user.getUid()));
+    default boolean validateSessionParam(SessionUser user) {
+        return null != user && StringUtils.isNotEmpty(user.getSid()) && StringUtils.isNotEmpty(user.getUid());
     }
 
     default SessionUser getSessionUserByUid(String uid) {
