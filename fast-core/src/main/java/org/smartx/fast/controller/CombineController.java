@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.smartx.commons.utils.JsonUtils;
 import org.smartx.commons.utils.LoggerUtils;
-import org.smartx.commons.utils.SpringUtils;
+import org.smartx.commons.utils.SpringContextHolder;
 import org.smartx.fast.bean.ApiRequest;
 import org.smartx.fast.bean.ApiResponse;
 import org.smartx.fast.bean.CombineRequest;
@@ -118,7 +118,7 @@ public class CombineController {
         ApiRequest apiRequest = data.getValue();
         // get url and handler method map
         Map<RequestMappingInfo, HandlerMethod> map = requestMapping.getHandlerMethods();
-        ApiController controller = SpringUtils.getBean("apiController");
+        ApiController controller = SpringContextHolder.getBean("apiController");
         CombineResponseData combineResponseData = null;
         boolean isUrlMatch = false;
         for (Entry<RequestMappingInfo, HandlerMethod> e : map.entrySet()) {

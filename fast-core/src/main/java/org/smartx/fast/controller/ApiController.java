@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.smartx.commons.utils.CodeUtils;
 import org.smartx.commons.utils.JsonUtils;
 import org.smartx.commons.utils.LoggerUtils;
-import org.smartx.commons.utils.SpringUtils;
+import org.smartx.commons.utils.SpringContextHolder;
 import org.smartx.fast.annotation.ParamCheck;
 import org.smartx.fast.annotation.Privilege;
 import org.smartx.fast.annotation.Verify;
@@ -28,7 +28,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -41,9 +40,6 @@ import javax.servlet.http.HttpServletRequest;
 public class ApiController {
 
     private static final Logger logger = LoggerFactory.getLogger(ApiController.class);
-
-    @Resource
-    private SessionContextSupport sessionContextSupport;
 
     @Value("${fast.api.key:9fbb9f7767b583f3236dbd005c79e301}")
     protected String key;
@@ -85,7 +81,7 @@ public class ApiController {
                         method = this.getClass().getMethod(methodName, ApiRequest.class);
                     } else {
                         // 组合请求的子接口
-                        obj = SpringUtils.getBean(className);
+                        obj = SpringContextHolder.getBean(className);
                         method = obj.getClass().getMethod(methodName, ApiRequest.class);
                     }
                     if (method == null) {
@@ -116,7 +112,8 @@ public class ApiController {
                     if (method.isAnnotationPresent(Privilege.class)) {
                         Privilege privilege = method.getAnnotation(Privilege.class);
                         if ("login".equals(privilege.type())) {
-                            SessionContext sessionContext = this.sessionContextSupport.get();
+                            SessionContextSupport sessionContextSupport = SpringContextHolder.getBean("sessionContextSupport");
+                            SessionContext sessionContext = sessionContextSupport.get();
                             if (!sessionContext.validateSessionParam(request.getSessionUser())) {
                                 return ApiResponse.invalidSessionParam();
                             }
