@@ -7,10 +7,23 @@
     	http://www.springframework.org/schema/context
     	http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
-    <context:component-scan base-package="org.smartx.fast">
-        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    <context:component-scan base-package="org.smartx.fast, org.smartx.redis">
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <context:annotation-config/>
+
+    <context:property-placeholder
+            location="classpath:demo.properties"/>
+
+    <bean class="org.smartx.commons.utils.SpringContextHolder" lazy-init="false"/>
+
+    <bean id="sessionContextSupport" class="org.smartx.fast.session.SessionContextSupport"
+          lazy-init="true"/>
+
+    <bean id="redisSessionContext" class="org.smartx.fast.session.RedisSessionContext"/>
+
+    <import resource="classpath:redis.xml"/>
 
 </beans>
