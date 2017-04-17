@@ -10,6 +10,7 @@ fast.api.session - 'none' means no need api session, 'map' means use java map st
 ```
 
 #### spring config
+1. json support
 ```
 <mvc:annotation-driven>
     <mvc:message-converters register-defaults="true">
@@ -26,9 +27,20 @@ fast.api.session - 'none' means no need api session, 'map' means use java map st
 ```
 support RequestMappingHandlerMapping in CombineController and return JSON message format.
 
+2. spring annotations support
 ```
 <context:annotation-config/>
 ```
 support @Resource @Component annotations.
 
-please reference to **fast-demo** project.
+3. SpringContextHolder bean
+
+please reference to **fast-demo** project for more details.
+
+
+### session support
+1. bean sessionContextSupport with lazy-init = true
+2. redis support
+- add org.smartx.redis in component-scan
+- add jedisCluster bean(reference redis.xml in fast-demo project)
+- bean redisSessionContext
