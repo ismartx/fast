@@ -1,6 +1,15 @@
 ## fast
 fast is a API framework base on spring mvc.
 
+### usage
+```
+<dependency>
+     <groupId>org.smartx</groupId>
+     <artifactId>fast-core</artifactId>
+     <version>1.0</version>
+</dependency>
+```
+
 ### config
 #### fast config
 ```
@@ -40,7 +49,32 @@ please reference to **fast-demo** project for more details.
 
 ### session support
 1. bean sessionContextSupport with lazy-init = true
+```
+<bean id="sessionContextSupport" class="org.smartx.fast.session.SessionContextSupport" lazy-init="true"/>
+```
 2. redis support
 - add org.smartx.redis in component-scan
+```
+<context:component-scan base-package="org.smartx.fast, org.smartx.redis">
+    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+</context:component-scan>
+```
 - add jedisCluster bean(reference redis.xml in fast-demo project)
+```
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis.pool.minIdle}"/>
+        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
+    </bean>
+
+    <bean id="jedisCluster"
+          class="org.smartx.redis.JedisClusterConnectionFactoryBean">
+        <property name="servers" value="${redis.servers}"/>
+        <property name="poolConfig" ref="jedisPoolConfig"/>
+    </bean>
+```
 - bean redisSessionContext
+```
+<bean id="redisSessionContext" class="org.smartx.fast.session.RedisSessionContext"/>
+```
