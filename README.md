@@ -15,7 +15,7 @@ fast is a API framework base on spring mvc.
 ```
 fast.api.key - message sign key
 fast.api.timeout - combine request api timeout, default 10s
-fast.api.session - 'none' means no need api session, 'map' means use java map stores session datas, 'redis' means use redis stores session datas.
+fast.api.session - defalut map, 'map' means use java map stores session datas, 'redis' means use redis stores session datas.
 ```
 
 #### spring config
