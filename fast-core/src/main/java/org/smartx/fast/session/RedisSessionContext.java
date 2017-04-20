@@ -2,7 +2,6 @@ package org.smartx.fast.session;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartx.fast.bean.ApiRequest;
-import org.smartx.fast.bean.ApiResponse;
 import org.smartx.fast.bean.Client;
 import org.smartx.fast.bean.SessionUser;
 import org.smartx.redis.template.HashRedisTemplate;
@@ -99,15 +98,6 @@ public class RedisSessionContext implements SessionContext {
     public void putSessionUser(SessionUser user) {
         String key = MessageFormat.format(SessionKeyEnum.USER_SESSION.getKey(), user.getUid());
         this.hashRedisTemplate.hset(key, SessionUser.SID, user.getSid());
-    }
-
-    /**
-     * put session user
-     */
-    @Override
-    public void putSessionUser(SessionUser user, ApiResponse response) {
-        this.putSessionUser(user);
-        response.addSessionUserToData(user);
     }
 
     /**

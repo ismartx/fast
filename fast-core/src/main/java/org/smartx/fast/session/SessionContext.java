@@ -44,7 +44,10 @@ public interface SessionContext {
     /**
      * put session user
      */
-    void putSessionUser(SessionUser user, ApiResponse response);
+    default void putSessionUser(SessionUser user, ApiResponse response) {
+        this.putSessionUser(user);
+        response.addSessionUserToData(user);
+    }
 
     /**
      * destroy session user
