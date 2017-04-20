@@ -26,6 +26,7 @@ public class RedisSessionContext implements SessionContext {
     /**
      * 判断session user是否存在
      */
+    @Override
     public boolean existSessionUser(ApiRequest request) {
         SessionUser user = request.getSessionUser();
         if (user != null) {
@@ -39,6 +40,7 @@ public class RedisSessionContext implements SessionContext {
     /**
      * 判断session id是否存在
      */
+    @Override
     public boolean existSessionId(ApiRequest request) {
         SessionUser user = request.getSessionUser();
         if (user != null) {
@@ -52,6 +54,7 @@ public class RedisSessionContext implements SessionContext {
     /**
      * 判断是否登录
      */
+    @Override
     public boolean validLogin(String uid, String sid) {
         if (StringUtils.isEmpty(uid) || StringUtils.isEmpty(sid)) {
             return false;
@@ -60,6 +63,7 @@ public class RedisSessionContext implements SessionContext {
         return hashRedisTemplate.exists(key) && sid.equals(hashRedisTemplate.hget(key, SessionUser.SID));
     }
 
+    @Override
     public String getSidByUid(String uid) {
         if (StringUtils.isEmpty(uid)) {
             return null;
@@ -74,6 +78,7 @@ public class RedisSessionContext implements SessionContext {
     /**
      * 判断session user是否相同
      */
+    @Override
     public boolean isSameSessionUser(ApiRequest request) {
         SessionUser user = request.getSessionUser();
         if (user != null) {
@@ -90,13 +95,7 @@ public class RedisSessionContext implements SessionContext {
     /**
      * put session user
      */
-    public void putSessionUser(ApiRequest request) {
-        this.putSessionUser(request.getSessionUser());
-    }
-
-    /**
-     * put session user
-     */
+    @Override
     public void putSessionUser(SessionUser user) {
         String key = MessageFormat.format(SessionKeyEnum.USER_SESSION.getKey(), user.getUid());
         this.hashRedisTemplate.hset(key, SessionUser.SID, user.getSid());
@@ -105,14 +104,7 @@ public class RedisSessionContext implements SessionContext {
     /**
      * put session user
      */
-    public void putSessionUser(ApiRequest request, ApiResponse response) {
-        this.putSessionUser(request.getSessionUser());
-        response.addSessionUserToData(request.getSessionUser());
-    }
-
-    /**
-     * put session user
-     */
+    @Override
     public void putSessionUser(SessionUser user, ApiResponse response) {
         this.putSessionUser(user);
         response.addSessionUserToData(user);
@@ -121,6 +113,7 @@ public class RedisSessionContext implements SessionContext {
     /**
      * destroy session user
      */
+    @Override
     public void destroySessionUser(ApiRequest request) {
         SessionUser user = request.getSessionUser();
         if (user != null) {
@@ -133,6 +126,7 @@ public class RedisSessionContext implements SessionContext {
     /**
      * destroy session id
      */
+    @Override
     public void destroySessionId(ApiRequest request) {
         SessionUser user = request.getSessionUser();
         if (user != null) {
@@ -145,6 +139,7 @@ public class RedisSessionContext implements SessionContext {
     /**
      * put client
      */
+    @Override
     public void putClient(Client client, String uid) {
         String key = MessageFormat.format(SessionKeyEnum.USER_SESSION.getKey(), uid);
         this.hashRedisTemplate.hset(key, "client", client);

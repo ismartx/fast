@@ -39,17 +39,7 @@ public interface SessionContext {
     /**
      * put session user
      */
-    void putSessionUser(ApiRequest request);
-
-    /**
-     * put session user
-     */
     void putSessionUser(SessionUser user);
-
-    /**
-     * put session user
-     */
-    void putSessionUser(ApiRequest request, ApiResponse response);
 
     /**
      * put session user
