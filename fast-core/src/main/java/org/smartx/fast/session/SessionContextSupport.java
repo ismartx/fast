@@ -27,11 +27,12 @@ public class SessionContextSupport {
     @PostConstruct
     private void init() {
         this.sessionContextMap.put("redis", SpringContextHolder.getBean("redisSessionContext"));
+        this.sessionContextMap.put("map", SpringContextHolder.getBean("mapSessionContext"));
     }
 
     public SessionContext get() {
         if (!sessionContextMap.containsKey(key)) {
-            throw new InvalidConfigException("Invalid fast.api.session value, only support [none, map or redis]");
+            throw new InvalidConfigException("Invalid fast.api.session value, only support [map or redis]");
         }
         return this.sessionContextMap.get(key);
     }
