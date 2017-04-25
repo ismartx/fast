@@ -6,6 +6,7 @@ import java.io.Serializable;
  * 返回状态信息
  *
  * @author kext
+ * @since 1.0
  */
 public class State implements Serializable {
 

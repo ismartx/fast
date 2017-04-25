@@ -3,7 +3,6 @@ package org.smartx.fast.session;
 import java.text.MessageFormat;
 
 /**
- * <b><code>RedisKeyEnum</code></b>
  * <p>
  * 定义所有存储在redis上的Key, expiredTime(seconds).
  * </p>
@@ -21,7 +20,7 @@ import java.text.MessageFormat;
  * </p>
  *
  * @author kext
- * @since fast 1.0
+ * @since 1.0
  */
 public enum SessionKeyEnum {
 

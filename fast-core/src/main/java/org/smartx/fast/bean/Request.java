@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Request
  *
  * @author kext
+ * @since 1.0
  */
 public class Request implements Serializable {
 

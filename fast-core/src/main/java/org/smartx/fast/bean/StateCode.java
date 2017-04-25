@@ -5,6 +5,7 @@ package org.smartx.fast.bean;
  * 返回码
  *
  * @author kext
+ * @since 1.0
  */
 public final class StateCode {
     // common code

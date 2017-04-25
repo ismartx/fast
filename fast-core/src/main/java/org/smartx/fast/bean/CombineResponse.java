@@ -7,6 +7,7 @@ import java.util.List;
  * API组合返回
  *
  * @author kext
+ * @since 1.0
  */
 public class CombineResponse extends Response implements Serializable {
 

@@ -10,7 +10,7 @@ import org.smartx.fast.bean.SessionUser;
  * session上下文
  *
  * @author kext
- * @since fast 1.0
+ * @since 1.0
  */
 public interface SessionContext {
 

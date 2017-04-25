@@ -6,6 +6,7 @@ package org.smartx.fast.exception;
  * </p>
  *
  * @author kext
+ * @since 1.0
  */
 public class InvalidConfigException extends RuntimeException {
 

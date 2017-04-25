@@ -6,6 +6,7 @@ import org.smartx.fast.bean.State;
  * 服务异常
  *
  * @author kext
+ * @since 1.0
  */
 public class ServiceException extends Exception {
 

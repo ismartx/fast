@@ -10,6 +10,7 @@ import java.util.Map;
  * API请求返回
  *
  * @author kext
+ * @since 1.0
  */
 public class ApiResponse extends Response {
 

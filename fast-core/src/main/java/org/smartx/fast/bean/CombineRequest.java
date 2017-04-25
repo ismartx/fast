@@ -6,6 +6,7 @@ import java.util.List;
  * 组合请求
  *
  * @author kext
+ * @since 1.0
  */
 public class CombineRequest extends Request {
 

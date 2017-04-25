@@ -4,6 +4,7 @@ package org.smartx.fast.bean;
  * API组合返回数据
  *
  * @author kext
+ * @since 1.0
  */
 public class CombineResponseData {
 

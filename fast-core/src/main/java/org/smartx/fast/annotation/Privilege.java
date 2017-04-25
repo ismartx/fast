@@ -9,6 +9,7 @@ import java.lang.annotation.Target;
  * API权限控制
  *
  * @author kext
+ * @since 1.0
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

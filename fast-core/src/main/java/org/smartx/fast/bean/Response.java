@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Response
  *
  * @author kext
+ * @since 1.0
  */
 public class Response implements Serializable {
 

@@ -16,6 +16,7 @@ import javax.annotation.Resource;
  * </p>
  *
  * @author kext
+ * @since 1.0
  */
 public class RedisSessionContext implements SessionContext {
 

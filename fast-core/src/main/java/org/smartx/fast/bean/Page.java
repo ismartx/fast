@@ -8,6 +8,7 @@ import java.io.Serializable;
  * API分页
  *
  * @author kext
+ * @since 1.0
  */
 public class Page implements Serializable {
 

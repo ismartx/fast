@@ -10,6 +10,7 @@ import java.util.Map;
  * API客户端信息
  *
  * @author kext
+ * @since 1.0
  */
 public class Client implements Serializable {
 

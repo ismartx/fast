@@ -8,6 +8,7 @@ import java.io.Serializable;
  * API用户信息
  *
  * @author kext
+ * @since 1.0
  */
 public class SessionUser implements Serializable {
 

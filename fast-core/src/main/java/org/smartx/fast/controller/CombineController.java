@@ -41,6 +41,7 @@ import javax.servlet.http.HttpServletRequest;
  * 组合接口
  *
  * @author kext
+ * @since 1.0
  */
 @RestController
 @RequestMapping(value = {"combine", "/v1/combine"})

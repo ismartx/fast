@@ -15,6 +15,7 @@ import java.util.Map;
  * </p>
  *
  * @author kext
+ * @since 1.0
  */
 public class MapSessionContext implements SessionContext {
 

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
  * API请求
  *
  * @author kext
+ * @since 1.0
  */
 public class ApiRequest extends Request {
 
