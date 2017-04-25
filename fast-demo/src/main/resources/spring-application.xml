@@ -23,6 +23,7 @@
           lazy-init="true"/>
 
     <bean id="redisSessionContext" class="org.smartx.fast.session.RedisSessionContext"/>
+    <bean id="mapSessionContext" class="org.smartx.fast.session.MapSessionContext"/>
 
     <import resource="classpath:redis.xml"/>
 
