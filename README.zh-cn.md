@@ -1,9 +1,9 @@
-[中文版](./README.zh-cn.md)
+[English](./README.md)
 
 ## fast
-fast is a API framework base on spring mvc.
+fast是一个基于Spring MVC的API框架。
 
-### usage
+### 使用
 ```
 <dependency>
      <groupId>org.smartx</groupId>
@@ -12,16 +12,16 @@ fast is a API framework base on spring mvc.
 </dependency>
 ```
 
-### config
-#### fast config
+### 配置
+#### fast配置
 ```
-fast.api.key - message sign key
-fast.api.timeout - combine request api timeout, default 10s
-fast.api.session - defalut map, 'map' means use java map stores session datas, 'redis' means use redis stores session datas.
+fast.api.key - 消息加密salt
+fast.api.timeout - 组合请求timeout时间，默认10秒
+fast.api.session - session存储，默认是内置的map，其他选择是redis，如果选择redis，请参考下面的配置。
 ```
 
-#### spring config
-1. json support
+#### spring配置
+1. json支持
 ```
 <mvc:annotation-driven>
     <mvc:message-converters register-defaults="true">
@@ -36,32 +36,32 @@ fast.api.session - defalut map, 'map' means use java map stores session datas, '
     </mvc:message-converters>
 </mvc:annotation-driven>
 ```
-support RequestMappingHandlerMapping in CombineController and return JSON message format.
+支持json，以及支持CombineController的RequestMappingHandlerMapping
 
-2. spring annotations support
+2. spring注解配置
 ```
 <context:annotation-config/>
 ```
-support @Resource @Component annotations.
+让@Resource @Component注解生效。
 
-3. SpringContextHolder bean
+3. SpringContextHolder bean配置
 
-please reference to **fast-demo** project for more details.
+参考**fast-demo**项目配置。
 
 
-### session support
-1. bean sessionContextSupport with lazy-init = true
+### session支持
+1. 配置bean sessionContextSupport
 ```
 <bean id="sessionContextSupport" class="org.smartx.fast.session.SessionContextSupport" lazy-init="true"/>
 ```
-2. redis support
-- add org.smartx.redis in component-scan
+2. redis支持
+- 添加org.smartx.redis in component-scan包扫描
 ```
 <context:component-scan base-package="org.smartx.fast, org.smartx.redis">
     <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 </context:component-scan>
 ```
-- add jedisCluster bean(reference redis.xml in fast-demo project)
+- 添加jedisCluster bean(参考redis.xml在fast-demo项目)
 ```
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <property name="maxTotal" value="${redis.pool.maxTotal}"/>
@@ -76,7 +76,7 @@ please reference to **fast-demo** project for more details.
         <property name="poolConfig" ref="jedisPoolConfig"/>
     </bean>
 ```
-- bean redisSessionContext
+- 配置bean redisSessionContext
 ```
 <bean id="redisSessionContext" class="org.smartx.fast.session.RedisSessionContext"/>
 ```
