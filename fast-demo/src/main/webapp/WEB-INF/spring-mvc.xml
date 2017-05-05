@@ -14,19 +14,29 @@
     <context:property-placeholder
             location="classpath:demo.properties"/>
 
+    <bean class="org.smartx.commons.utils.SpringContextHolder" lazy-init="false"/>
+
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
             <!-- 配置Fastjson支持 -->
-            <bean
-                    class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
                 <property name="supportedMediaTypes">
                     <list>
                         <value>text/html;charset=UTF-8</value>
                         <value>application/json;charset=UTF-8</value>
                     </list>
                 </property>
+                <property name="fastJsonConfig" ref="fastJsonConfig"/>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+
+    <bean id="fastJsonConfig" class="com.alibaba.fastjson.support.config.FastJsonConfig">
+        <property name="features">
+            <list>
+                <value>DisableCircularReferenceDetect</value>
+            </list>
+        </property>
+    </bean>
 
 </beans>

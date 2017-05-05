@@ -34,6 +34,10 @@ public class DemoController extends ApiController {
         return ApiResponse.ok().addValueToData("name", "kext");
     }
 
+    public ApiResponse test2(ApiRequest request) {
+        return ApiResponse.ok().addValueToData("name", "test2");
+    }
+
     @Privilege
     public ApiResponse testPrivilege(ApiRequest request) {
         return ApiResponse.ok();
