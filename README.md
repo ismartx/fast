@@ -4,6 +4,8 @@
 fast is a API framework base on spring mvc.
 
 ### usage
+> java version required JDK8
+
 ```
 <dependency>
      <groupId>org.smartx</groupId>

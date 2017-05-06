@@ -4,6 +4,8 @@
 fast是一个基于Spring MVC的API框架。
 
 ### 使用
+> java版本要求使用JDK8以上
+
 ```
 <dependency>
      <groupId>org.smartx</groupId>
