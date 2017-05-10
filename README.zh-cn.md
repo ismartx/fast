@@ -5,7 +5,14 @@ fast是一个基于Spring MVC的API框架。
 
 ### 使用
 > java版本要求使用JDK8以上
-
+```
+<mirror>
+    <id>nexus</id>
+    <mirrorOf>*</mirrorOf>
+    <name>Private Nexus</name>
+    <url>http://repo.dingdingyisheng.mobi/repository/maven-public</url>
+</mirror>
+```
 ```
 <dependency>
      <groupId>org.smartx</groupId>
